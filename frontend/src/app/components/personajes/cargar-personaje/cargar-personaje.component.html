@@ -1,0 +1,39 @@
+<h2 class="center">Menú admin</h2>
+<hr>
+<div class="container center">
+<form #cargar="ngForm" class="col s8" (ngSubmit)="postPersonaje(cargar)">
+ <!-- <input type="hidden" id="id" name="id" [(ngModel)]="peliculasService.pelicula._id" > -->
+
+  <div class="input-field col s6">    
+  <label for="nombre">Nombre</label>
+  <input type="text" id="nombre" name="nombre" ngModel required #nombre="ngModel" >
+  </div>
+
+  <div class="input-field col s6">
+  <label for="biografia">Biografia</label>
+  <input type="text" id="biografia" name="biografia"  ngModel #biografia="ngModel" >
+  </div>
+
+  <div class="input-field col s6">
+  <label for="peliculas">Peliculas</label>
+  <input type="text" id="peliculas" name="peliculas" ngModel #peliculas="ngModel"  >
+  </div>
+
+  <div class="input-field col s6">
+    <label for="imagen">Imagen URL</label>
+    <input type="text" id="imagen" name="imagen" ngModel #imagen="ngModel" >
+    </div>
+
+  <div class="row">
+  <button class="btn waves-effect waves-light" type="submit" name="action">Cargar
+          <i class="material-icons right">beenhere</i>
+  </button>
+
+  <button  style="margin-left: 15px;"  class="btn waves-effect red" [routerLink]="['/personajes']"  name="action">Cancelar
+      <i class="material-icons right">call_end</i>
+</button>
+
+  </div>
+
+</form>
+</div>

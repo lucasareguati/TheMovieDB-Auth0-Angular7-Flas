@@ -27,7 +27,7 @@ export class HomeComponent implements OnInit {
   Buscar() {
     this.moviedbService.getBusquedaPeliculas(this.peliculaBuscada).subscribe((data: any) => {
       console.log(data);
-      const peli = new Pelicula(data[0].title, data[0].overview, data[0].release_date,
+      const peli = new Pelicula(data[0]._id, data[0].title, data[0].overview, data[0].release_date,
                 'https://image.tmdb.org/t/p/w600_and_h900_bestv2' + data[0].poster_path);
       this.peliculaService.postPelicula(peli).subscribe();
       console.log(peli);
@@ -43,6 +43,7 @@ export class HomeComponent implements OnInit {
   getPeliculas() {
     this.peliculaService.getPeliculas().subscribe(res => {
       this.peliculaService.peliculas = res as [];
+      console.log(res);
     });
   }
 }

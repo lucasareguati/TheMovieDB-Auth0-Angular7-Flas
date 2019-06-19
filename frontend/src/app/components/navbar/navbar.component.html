@@ -1,25 +1,24 @@
 <nav>
-  <div class="nav-wrapper">
-    <a href="#" style="margin-left:25px" class="brand-logo">Pelispedia</a>
-    <div class="container">
-        <form #form="ngForm">
-          <div class="row">
+    <div class="nav-wrapper">
+      <a href="#" style="margin-left:25px" class="brand-logo">Pelispedia</a>
+      <div class="container">
+          <form #form="ngForm">
+            <div class="row">
+              
+              <input *ngIf="auth.isAuthenticated()" id="icon_prefix" type="text" class="validate col s5" name="pelicula" #pelicula="ngModel" [(ngModel)]="this.peliculaBuscada">
+              <a *ngIf="auth.isAuthenticated()" class="waves-effect waves-light btn-small"  (click)="Buscar()" [routerLink]="['/']"><i class="material-icons left"></i>Cargar</a>    
             
-            <input *ngIf="auth.isAuthenticated()" id="icon_prefix" type="text" class="validate col s5" name="pelicula" #pelicula="ngModel" [(ngModel)]="this.peliculaBuscada">
-            <a *ngIf="auth.isAuthenticated()" class="waves-effect waves-light btn-small"  (click)="Buscar()" [routerLink]="['/']"><i class="material-icons left"></i>Cargar</a>    
-          
-            <button class="btn btn-primary btn-margin" style="margin-right: auto;" *ngIf="!auth.isAuthenticated()" (click)="auth.login()">
-                Iniciar sesión
-              </button>
-              <button class="btn btn-primary btn-margin" style="margin-left: 25px"  *ngIf="auth.isAuthenticated()" (click)="auth.logout()">
-                  Cerrar sesión
+              <button class="btn btn-primary btn-margin" style="margin-right: auto;" *ngIf="!auth.isAuthenticated()" (click)="auth.login()">
+                  Iniciar sesión
                 </button>
-            
-          </div>
-        </form>
+                <button class="btn btn-primary btn-margin" style="margin-left: 25px"  *ngIf="auth.isAuthenticated()" (click)="auth.logout()">
+                    Cerrar sesión
+                  </button>
+                  <a *ngIf="auth.isAuthenticated()" class="waves-effect waves-light btn-small" [routerLink]="['/personajes/cargar']"><i class="material-icons right"></i>Cargar Personaje</a>
+            </div>
+          </form>
+          
+        </div>
         
-      </div>
-      
-  </div>
-</nav>
-      
+    </div>
+  </nav>

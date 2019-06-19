@@ -3,7 +3,7 @@ import { AuthService } from '../../services/auth0.service';
 import { MoviedbService } from '../../services/moviedb.service';
 import { Pelicula } from '../../clases/pelicula';
 import { PeliculaService } from 'src/app/services/pelicula.service';
-
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -13,17 +13,22 @@ import { PeliculaService } from 'src/app/services/pelicula.service';
 export class NavbarComponent implements OnInit {
   peliculaBuscada: string;
 
-  constructor(private peliculaService: PeliculaService, private auth: AuthService, private moviedbService: MoviedbService) { 
+  constructor(private router: Router, private activatedrouter: ActivatedRoute, private peliculaService: PeliculaService,
+              private auth: AuthService, private moviedbService: MoviedbService) {
     auth.handleAuthentication();
   }
 
   ngOnInit() {
   }
 
+  reloadPage() {
+    this.router.navigate(['/']);
+  }
+
   Buscar() {
     this.moviedbService.getBusquedaPeliculas(this.peliculaBuscada).subscribe((data: any) => {
       console.log(data);
-      const peli = new Pelicula(data[0].title, data[0].overview, data[0].release_date,
+      const peli = new Pelicula(data[0]._id, data[0].title, data[0].overview, data[0].release_date,
                 'https://image.tmdb.org/t/p/w600_and_h900_bestv2' + data[0].poster_path);
       this.peliculaService.postPelicula(peli).subscribe();
       console.log(peli);

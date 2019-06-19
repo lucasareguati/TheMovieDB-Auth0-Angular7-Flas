@@ -9,20 +9,34 @@ import { HomeComponent } from './components/home/home.component';
 import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
 import { AuthService } from './services/auth0.service';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { RouterModule, Routes } from '@angular/router';
+import { DetalleComponent } from './components/detalle/detalle.component';
+import { HomePersonajesComponent } from './components/personajes/home/home-personajes/home-personajes.component';
+import { DetallePersonajeComponent } from './components/personajes/detalle-personaje/detalle-personaje.component';
+import { CargarPersonajeComponent } from './components/personajes/cargar-personaje/cargar-personaje.component';
+import { FooterComponent } from './components/footer/footer.component';
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
     CargarPeliComponent,
     HomeComponent,
-    NavbarComponent
+    NavbarComponent,
+    FooterComponent,
+    DetalleComponent,
+    CargarPersonajeComponent,
+    HomePersonajesComponent,
+    DetallePersonajeComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
-    HttpClientJsonpModule
+    HttpClientJsonpModule,
+    RouterModule
   ],
   providers: [PeliculaService,
   AuthService],

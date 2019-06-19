@@ -1,0 +1,46 @@
+
+<h1 class="center">Personajes</h1>
+<!--Cards-->
+<div class="row" style="margin: 10%">
+  <div class="col s4" *ngFor='let personaje of personajeService.personajes'>
+    <div  class="card large">
+      <div class="card-image">
+        <img src="{{personaje[1].imagen}}">
+        <span class="card-title">{{personaje[1].nombre}}</span>
+      </div>
+      <div class="card-content">
+        <p>{{personaje[1].biografia}}</p>
+      </div>
+      <div class="card-action">
+       <a href="#" routerLink="/personajes/{{personaje[0]}}">Ver más</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="container">
+    <h3>Buscar personajes según pelicula: </h3>
+    
+      <input type="text" id="buscado" name="buscado"  [(ngModel)]="personajeService.peliBuscada">
+   
+     <button class="btn waves-effect waves-light" (click)="Buscar()">Buscar</button>
+  
+    <div class="container" *ngIf="encontrado; else elseBlock">
+      <ul class="collection">
+        <h4 class="center">Personajes</h4>
+        <hr>
+        <div *ngFor="let personaje of personajes">
+        <li class="collection-item"><blockquote>{{personaje}}</blockquote></li>
+      </div>
+      </ul>
+           
+    </div>
+    <ng-template #elseBlock>
+      <div class="container" *ngIf="mostrar">
+      <h4 class="center">No se encontraron coincidencias</h4>
+      <button class="btn waves-effect" (click)="ok()">Ok</button>
+      </div>
+    </ng-template>
+  </div>
+  

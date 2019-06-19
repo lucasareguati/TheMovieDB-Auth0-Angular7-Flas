@@ -1,18 +1,25 @@
-
 <!--Cards-->
 <div class="row" style="margin: 10%">
-  <div class="col s4" *ngFor='let pelicula of peliculaService.peliculas'>
-    <div  class="card large">
-      <div class="card-image">
-        <img src="{{pelicula.rutaPoster}}">
-        <span class="card-title">{{pelicula.titulo}}</span>
-      </div>
-      <div class="card-content">
-        <p>{{pelicula.sinopsis}}</p>
-      </div>
-      <div class="card-action">
-        <a href="#">{{pelicula.fechaLanzamiento}}</a>
+    <div class="col s4" *ngFor='let pelicula of peliculaService.peliculas'>
+      <div  class="card large">
+        <div class="card-image">
+          <img src="{{pelicula.rutaPoster}}">
+          <span class="card-title">{{pelicula.titulo}}</span>
+        </div>
+        <div class="card-content">
+          <p>{{pelicula.sinopsis}}</p>
+        </div>
+        <div class="card-action">
+         <a href="#" routerLink="detalle/{{pelicula._id['$oid']}}">{{pelicula.fechaLanzamiento}}</a>
+        </div>
       </div>
     </div>
   </div>
-</div>
+
+
+
+
+
+
+
+
